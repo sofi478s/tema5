@@ -9,9 +9,26 @@
 
 <body>
 	<script>
-		let navn = prompt("Hvad er dit navn?");
+		let længde = prompt("Angiv længde");
+		let bredde = prompt("Angiv bredde");
 
-		alert(`Goddag kære ${navn}`)
+		//Lav en funktion, areal, som med længde og
+		//bredde som parametre, kan udregne et areal,
+		//og returnere resultatet.
+		//let areal = længde * bredde;
+
+		function areal(l, b) {
+			return (l * b)
+		}
+
+		let resultat = `Arealet er ${areal(længde, bredde)} kvadratmeter. Har du brug for et nyt areal?`;
+
+		confirm(resultat);
+
+		if (confirm) {
+			location.reload()
+		}
+		// console.log(resultat);
 	</script>
 
 </body>
