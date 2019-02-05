@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        #grøn {
+            background-color: green;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        #rød {
+            background-color: red;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="grøn"></div>
+        <div id="rød"></div>
+    </div>
+
+    | <script>
+        let foxURL = `http://helf-kea.dk/test/fox.png`;
+        let firkant = document.querySelector("#grøn");
+        firkant.innerHTML = '<img src="http://helf-kea.dk/test/frog.png" alt="frø">';
+
+        let cirkel = document.querySelector("#rød");
+        cirkel.innerHTML = '<img src="http://helf-kea.dk/test/gris.png" alt="gris">';
+        cirkel.innerHTML += `<img src= ${foxURL} alt="ræv">`;
+    </script>
+</body>
+
+</html>
