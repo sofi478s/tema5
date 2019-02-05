@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,10 +34,17 @@
 
     <script>
         let firkant = document.querySelector("#grøn");
-        firkant.textContent = "Grøn firkant";
-
         let cirkel = document.querySelector("#rød");
-        cirkel.textContent = "Rød cirkel";
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("DOMContentLoaded complete")
+        }
+
+        firkant.innerHTML = '<img src="http://helf-kea.dk/test/frog.png" alt="frø">';
+        cirkel.innerHTML = '<img src="http://helf-kea.dk/test/gris.png" alt="gris">';
     </script>
 </body>
+
 </html>
