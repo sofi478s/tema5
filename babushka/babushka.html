@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+</head>
+
+<body>
+
+	<style>
+		#dethele {
+			display: grid;
+			grid-template-columns: auto auto auto;
+		}
+
+		#enkelt {
+			margin: 20px;
+		}
+
+		#enkelt img {
+			width: 100%;
+		}
+
+	</style>
+
+	<div id="dethele">
+
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", hentJson);
+
+		async function hentJson() {
+			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+			alleRetter = await jsonData.json();
+			visRetter();
+		}
+
+
+		function visRetter() {
+			let destination = document.querySelector("#dethele");
+
+			alleRetter.forEach(ret => {
+				destination.innerHTML += `<div id="enkelt"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg> <br> <p>Pris: ${ret.pris},-</p></div>`;
+
+			})
+		}
+
+	</script>
+</body>
+
+</html>
