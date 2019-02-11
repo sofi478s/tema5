@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+</head>
+
+<body>
+
+	<style>
+		h1 {
+			text-align: center;
+		}
+
+		#menu {
+			text-align: center;
+		}
+
+		#enkelt {
+			margin: 5vw;
+		}
+
+		#enkelt img {
+			width: 80%;
+		}
+
+		#dethele {
+			text-align: center;
+		}
+
+		@media only screen and (min-width:700px) {
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+		}
+
+		@media only screen and (min-width:1000px) {
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto auto;
+			}
+		}
+
+		.valgt {
+			background-color: grey;
+		}
+	</style>
+	<h1>Alle</h1>
+	<div id="menu">
+		<button class="filter valgt" data-hold="alle">Alle</button>
+		<button class="filter" data-hold="a">Hold A</button>
+		<button class="filter" data-hold="b">Hold B</button>
+	</div>
+
+	<div id="dethele">
+
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", hentJson);
+		let filter = "alle";
+
+		async function hentJson() {
+			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+			allePersoner = await jsonData.json();
+			visPersoner();
+		}
+
+
+		function visPersoner() {
+			let destination = document.querySelector("#dethele");
+			destination.innerHTML = "";
+
+			allePersoner.forEach(person => {
+				if (filter == "alle" || filter == person.hold) {
+					destination.innerHTML += `
+									<div id="enkelt">
+										<h2>${person.navn}</h2>
+										<img src=${person.billede}> <br>
+										<a href="https://github.com/${person.github}">Link til github</a>
+									</div>
+										`;
+
+				}
+			})
+		}
+
+		document.querySelectorAll(".filter").forEach(knap => {
+			knap.addEventListener("click", filtrering);
+		})
+
+		function filtrering() {
+			document.querySelector("h1").textContent = this.textContent;
+			filter = this.getAttribute("data-hold");
+			console.log(filter);
+			visPersoner();
+		}
+	</script>
+</body>
+
+</html>

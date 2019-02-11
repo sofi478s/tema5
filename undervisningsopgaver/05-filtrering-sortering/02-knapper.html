@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+</head>
+
+<body>
+
+	<style>
+		#menu {
+			text-align: center;
+		}
+
+		#enkelt {
+			margin: 5vw;
+		}
+
+		#enkelt img {
+			width: 50%;
+		}
+
+		@media only screen and (min-width:700px) {
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+		}
+
+		@media only screen and (min-width:1000px) {
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto auto;
+			}
+
+			#enkelt {
+				margin: 1vw;
+			}
+
+			#enkelt img {
+				width: 50%;
+			}
+		}
+
+		.valgt {
+			background-color: grey;
+		}
+	</style>
+	<div id="menu">
+		<button class="filter" data-hold="alle">Alle</button>
+		<button class="filter valgt" data-hold="a">Hold A</button>
+		<button class="filter" data-hold="b">Hold B</button>
+	</div>
+
+	<div id="dethele">
+
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", hentJson);
+		let filter = "a";
+
+		async function hentJson() {
+			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+			allePersoner = await jsonData.json();
+			visPersoner();
+		}
+
+
+		function visPersoner() {
+			let destination = document.querySelector("#dethele");
+
+			allePersoner.forEach(person => {
+				if (person.hold == filter) {
+					destination.innerHTML += `
+									<div id="enkelt">
+										<h2>${person.navn}</h2>
+										<img src=${person.billede}> <br>
+										<a href="https://github.com/${person.github}">Link til github</a>
+									</div>
+										`;
+
+				}
+			})
+		}
+	</script>
+</body>
+
+</html>
