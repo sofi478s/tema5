@@ -10,9 +10,15 @@
 <body>
 
 	<style>
+		#menu {
+			text-align: center;
+			display: grid;
+			grid-template-columns: auto auto
+		}
+
 		#dethele {
 			display: grid;
-			grid-template-columns: auto auto auto;
+			grid-template-columns: auto;
 		}
 
 		#enkelt {
@@ -23,8 +29,35 @@
 			width: 100%;
 		}
 
-	</style>
+		@media only screen and (min-width:700px) {
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+		}
 
+		@media only screen and (min-width:1000px) {
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto auto;
+			}
+		}
+	</style>
+	<div id="menu">
+		<div id="kategori">
+			<h2>Kategorier</h2>
+			<button>Forretter</button>
+			<button>Hovedretter</button>
+			<button>Dessert</button>
+		</div>
+
+		<div id="sorter">
+			<h2>Sorter</h2>
+			<button>Pris, lav til høj</button>
+			<button>Pris, høj til lav</button>
+			<button>Navn, a til å</button>
+		</div>
+	</div>
 	<div id="dethele">
 
 	</div>
@@ -47,7 +80,6 @@
 
 			})
 		}
-
 	</script>
 </body>
 
