@@ -67,6 +67,10 @@
 		async function hentJson() {
 			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
 			allePersoner = await jsonData.json();
+			allePersoner.sort((a, b) => {
+				return a.navn.localeCompare(b.navn);
+			});
+
 			visPersoner();
 		}
 
@@ -81,7 +85,7 @@
 									<div id="enkelt">
 										<h2>${person.navn}</h2>
 										<img src=${person.billede}> <br>
-										<a href="https://github.com/${person.github}">Link til github</a>
+										<p>Alder: ${person.alder}</p>
 									</div>
 										`;
 
