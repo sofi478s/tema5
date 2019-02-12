@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<style>
+		body {
+			margin: 0px;
+			background-color: #2b4e7b;
+		}
+
+		/*____________________Header____________________*/
+
+		header {
+			background-image: url("imgs/header.jpg");
+			background-repeat: no-repeat;
+			height: 100%;
+			width: 100%;
+			position: fixed;
+		}
+
+
+		/*____________________Navigation____________________*/
+		.valgt {
+			background-color: grey;
+		}
+
+		nav {
+			text-align: center;
+			display: grid;
+			grid-template-columns: auto;
+		}
+
+		nav h2 {
+			color: white;
+		}
+
+		/*	____________________Fonte ____________________ */
+		h1 {
+			text-align: center;
+			color: white;
+		}
+
+		/*	____________________Pop Up____________________*/
+
+		#popup {
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			background-color: indianred;
+			display: none;
+		}
+
+		#indhold {
+			min-height: 80vh;
+			background-color: white;
+			width: 70vw;
+			margin: 4rem auto;
+		}
+
+		#luk {
+			top: 3vh;
+			position: fixed;
+			right: 6rem;
+			padding-right: 2rem;
+		}
+
+		#luk button {
+			font-size: 2rem;
+		}
+
+		/*	____________________Indhold paa siden____________________*/
+		#article {
+			margin: 20px;
+			background-color: white;
+			padding: 5vw;
+		}
+
+		#article img {
+			width: 100%;
+		}
+
+		#dethele {
+			display: grid;
+			grid-template-columns: auto;
+		}
+
+		/*____________________Media Queries____________________*/
+		@media only screen and (min-width:700px) {
+			nav {
+				text-align: center;
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+		}
+
+		@media only screen and (min-width:1000px) {
+			nav {
+				text-align: center;
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto auto;
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="popup">
+		<div id="luk">
+			<button>x</button> </div>
+		<div id="indhold">
+		</div>
+	</div>
+	<nav>
+		<div id="kategori">
+			<h2>Kategorier</h2>
+			<button class="filter" data-kategori="alle">Alle retter</button>
+			<button class="filter" data-kategori="forretter">Forretter</button>
+			<button class="filter" data-kategori="hovedretter">Hovedretter</button>
+			<button class="filter" data-kategori="desserter">Desserter</button>
+		</div>
+
+		<div id="sorter">
+			<h2>Sorter</h2>
+			<button class="sorter sorterPris">Pris, lav til høj</button>
+			<button class="sorter sorterPrisOmvendt">Pris, høj til lav</button>
+			<button class="sorter sorterNavn">Navn, a til å</button>
+		</div>
+	</nav>
+
+	<h1>Alle retter</h1>
+	<div id="dethele">
+
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", hentJson);
+		let filter = "alle";
+
+		async function hentJson() {
+			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+			alleRetter = await jsonData.json();
+			visRetter();
+		}
+
+
+		function visRetter() {
+			let destination = document.querySelector("#dethele");
+			destination.innerHTML = "";
+
+			alleRetter.forEach(ret => {
+				if (filter == "alle" || filter == ret.kategori) {
+					let template = `
+						<div id="article"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg> <br> <p>Pris: ${ret.pris},-</p></div>`;
+
+					destination.insertAdjacentHTML("beforeend", template);
+					destination.lastElementChild.addEventListener("click", visSingle);
+
+					function visSingle() {
+						document.querySelector("#indhold").innerHTML = `
+<div id="article"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg> <br> <p>Pris: ${ret.pris},-</p></div>`;
+
+						document.querySelector("#popup").style.display = "block";
+
+						document.querySelector("#popup #luk").addEventListener("click", close);
+					}
+				}
+
+			});
+		}
+
+
+
+		function close() {
+			document.querySelector("#popup").style.display = "none";
+		}
+
+		document.querySelectorAll(".filter").forEach(knap => {
+			knap.addEventListener("click", filtrering);
+		});
+
+		function filtrering() {
+			document.querySelector("h1").textContent = this.textContent;
+			filter = this.getAttribute("data-kategori");
+			console.log(filter);
+			visRetter();
+		}
+
+		document.querySelectorAll(".sorter").forEach(knap => {
+			knap.addEventListener("click", sortering);
+		});
+
+		function sortering() {
+			console.log("Sortering");
+			if (this.classList.contains("sorterPris")) {
+				alleRetter.sort((a, b) => {
+					return a.pris - b.pris
+				});
+			} else if (this.classList.contains("sorterPrisOmvendt")) {
+				alleRetter.sort((a, b) => {
+					return b.pris - a.pris
+				});
+			} else if (this.classList.contains("sorterNavn")) {
+				alleRetter.sort((a, b) => {
+					return a.navn.localeCompare(b.navn);
+				});
+			}
+
+			visRetter();
+
+		}
+	</script>
+</body>
+
+</html>
