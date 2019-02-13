@@ -7,7 +7,164 @@
 	<title></title>
 	<style>
 		/*	____________________Pop Up____________________*/
+		body {
+			margin: 0px;
+			background-color: rgba(128, 128, 128, 0);
+		}
 
+		/*____________________Header____________________*/
+
+		header {
+			color: #2e2e2e;
+			background-color: white;
+			text-align: center;
+			width: 100%;
+			font-family: 'Mr Dafoe', cursive;
+			font-size: 7vw;
+			top: 0;
+			position: fixed;
+		}
+
+		#brødtekst {
+			margin: 10vw;
+		}
+
+
+
+		/*____________________Navigation____________________*/
+
+		nav {
+			text-align: center;
+			display: grid;
+			grid-template-columns: auto;
+		}
+
+		nav h2 {
+			color: #383838;
+			font-family: 'Anonymous Pro', monospace;
+			font-size: 1.2rem;
+		}
+
+		button {
+			border: 1px rgba(255, 165, 0, 0.35) solid;
+			font-family: 'Anonymous Pro', monospace;
+			color: grey;
+		}
+
+		/*	____________________Fonte ____________________ */
+		h1 {
+			text-align: center;
+			font-family: 'Anonymous Pro', monospace;
+			color: #383838;
+		}
+
+		h2 {
+			text-align: center;
+			font-family: 'Anonymous Pro', monospace;
+			color: #383838;
+		}
+
+		h3 {
+			text-align: center;
+			font-size: 1.2rem;
+			font-family: 'Anonymous Pro', monospace;
+			color: #383838;
+		}
+
+		p {
+			font-size: 1rem;
+			font-family: 'Anonymous Pro', monospace;
+			color: #383838;
+		}
+
+
+
+
+		/*	____________________Pop Up____________________*/
+
+		#popup {
+			background-color: white;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			display: none;
+		}
+
+		#popup #article img {
+			width: 50%;
+		}
+
+
+
+		#indhold {
+			text-align: center;
+			background-color: white;
+			width: 90vw;
+			height: 90vw;
+			top: 0;
+			margin: 10vw auto;
+		}
+
+		#luk {
+			top: 6.7vh;
+			position: static;
+			right: 1rem;
+			padding-right: 2rem;
+			float: right;
+
+		}
+
+		#luk button {
+			padding: 1rem;
+			font-size: 1rem;
+		}
+
+		/*	____________________Indhold paa siden____________________*/
+		#article {
+			margin: 10px;
+			border: 1.4px solid gray;
+			padding: 5vw;
+		}
+
+		#article img {
+			width: 100%;
+		}
+
+		#dethele {
+			display: grid;
+			grid-template-columns: auto;
+		}
+
+
+		/*____________________Media Queries____________________*/
+		@media only screen and (min-width:700px) {
+			nav {
+				text-align: center;
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+		}
+
+		@media only screen and (min-width:1000px) {
+			nav {
+				text-align: center;
+				display: grid;
+				grid-template-columns: auto auto;
+			}
+
+			#dethele {
+				display: grid;
+				grid-template-columns: auto auto auto;
+			}
+		}
+
+		/*
 		body {
 			box-sizing: border-box;
 		}
@@ -32,15 +189,25 @@
 		}
 
 		#luk {
-			top: 3vh;
-			position: fixed;
-			right: 6rem;
+			top: 6.7vh;
+			position: static;
+			right: 1rem;
 			padding-right: 2rem;
+			float: right;
+
 		}
 
 		#luk button {
-			font-size: 2rem;
+			padding: 1rem;
+			font-size: 1rem;
 		}
+
+		button {
+			border: 1px rgba(255, 165, 0, 0.35) solid;
+			font-family: 'Anonymous Pro', monospace;
+			color: grey;
+		}
+*/
 	</style>
 
 </head>
@@ -74,7 +241,7 @@
 			alleRetter.forEach(ret => {
 				if (ret.id == id) {
 					let template = `
-						<div id="article"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg> <br> <p>Pris: ${ret.pris},-</p></div>`;
+<div id="article"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg><br> <p>${ret.lang}</p> <br> <p>Oprindelse: ${ret.oprindelse}</p> <br> <p>Pris: ${ret.pris},-</p></div>`;
 
 					destination.insertAdjacentHTML("beforeend", template);
 					destination.lastElementChild.addEventListener("click", visSingle);
