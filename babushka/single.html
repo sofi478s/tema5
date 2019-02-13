@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<style>
+		/*	____________________Pop Up____________________*/
+
+		body {
+			box-sizing: border-box;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		#single {
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: indianred;
+
+		}
+
+		#indhold {
+			min-height: 80vh;
+			background-color: white;
+			width: 70vw;
+			margin: 4rem auto;
+		}
+
+		#luk {
+			top: 3vh;
+			position: fixed;
+			right: 6rem;
+			padding-right: 2rem;
+		}
+
+		#luk button {
+			font-size: 2rem;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="single">
+		<div id="luk">
+			<button>x</button> </div>
+		<div id="indhold">
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", hentJson);
+		let filter = "alle";
+
+		let urlParams = new URLSearchParams(window.location.search)
+		let id = urlParams.get("id");
+
+
+		async function hentJson() {
+			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+			alleRetter = await jsonData.json();
+			visRetter();
+		}
+
+
+		function visRetter() {
+			let destination = document.querySelector("#indhold");
+
+			alleRetter.forEach(ret => {
+				if (ret.id == id) {
+					let template = `
+						<div id="article"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg> <br> <p>Pris: ${ret.pris},-</p></div>`;
+
+					destination.insertAdjacentHTML("beforeend", template);
+					destination.lastElementChild.addEventListener("click", visSingle);
+
+				}
+
+			});
+		}
+
+
+		document.querySelector("#luk").addEventListener("click", () => {
+			location.href = "babushka3.html"
+		})
+
+		document.querySelectorAll(".filter").forEach(knap => {
+			knap.addEventListener("click", filtrering);
+		});
+
+		function filtrering() {
+			document.querySelector("h1").textContent = this.textContent;
+			filter = this.getAttribute("data-kategori");
+			console.log(filter);
+			visRetter();
+		}
+
+		document.querySelectorAll(".sorter").forEach(knap => {
+			knap.addEventListener("click", sortering);
+		});
+
+		function sortering() {
+			console.log("Sortering");
+			if (this.classList.contains("sorterPris")) {
+				alleRetter.sort((a, b) => {
+					return a.pris - b.pris
+				});
+			} else if (this.classList.contains("sorterPrisOmvendt")) {
+				alleRetter.sort((a, b) => {
+					return b.pris - a.pris
+				});
+			} else if (this.classList.contains("sorterNavn")) {
+				alleRetter.sort((a, b) => {
+					return a.navn.localeCompare(b.navn);
+				});
+			}
+
+			visRetter();
+
+		}
+	</script>
+</body>
+
+</html>
