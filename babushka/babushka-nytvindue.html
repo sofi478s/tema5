@@ -4,7 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>Babusha Bistro</title>
+	<link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
 	<style>
 		body {
 			margin: 0px;
@@ -24,7 +26,7 @@
 			position: fixed;
 		}
 
-		#brødtekst {
+		#dethele {
 			margin: 10vw;
 		}
 
@@ -130,11 +132,25 @@
 			width: 100%;
 		}
 
-		#dethele {
+		#brødtekst {
 			display: grid;
 			grid-template-columns: auto;
 		}
 
+		/*	____________________Footer____________________*/
+
+		footer article {
+			font-size: 0.8rem;
+			font-family: 'Anonymous Pro', monospace;
+			color: #383838;
+		}
+
+		footer {
+			text-align: center;
+			display: grid;
+			grid-template-columns: auto auto;
+			margin-bottom: 1vw;
+		}
 
 		/*____________________Media Queries____________________*/
 		@media only screen and (min-width:700px) {
@@ -144,7 +160,7 @@
 				grid-template-columns: auto auto;
 			}
 
-			#dethele {
+			#brødtekst {
 				display: grid;
 				grid-template-columns: auto auto;
 			}
@@ -157,7 +173,7 @@
 				grid-template-columns: auto auto;
 			}
 
-			#dethele {
+			#brødtekst {
 				display: grid;
 				grid-template-columns: auto auto auto;
 			}
@@ -169,14 +185,7 @@
 <body>
 	<header>Babusha Bistro</header>
 
-	<div id="popup">
-		<div id="luk">
-			<button>luk</button> </div>
-		<div id="indhold">
-		</div>
-	</div>
-
-	<section id="brødtekst">
+	<section id="dethele">
 		<nav>
 			<div id="kategori">
 				<h2>Kategorier</h2>
@@ -195,11 +204,14 @@
 		</nav>
 
 		<h1>Alle retter</h1>
-		<div id="dethele">
+		<div id="brødtekst">
 
 		</div>
 	</section>
-
+	<footer>
+		<article>Grønnegade 97, <br> 1234 København K</article>
+		<article>Åbningstider: <br>Mandag-fredag: 10:30 - 22:00 <br> Lørdag: 12:00 - 23:00</article>
+	</footer>
 	<script>
 		document.addEventListener("DOMContentLoaded", hentJson);
 		let filter = "alle";
@@ -212,7 +224,7 @@
 
 
 		function visRetter() {
-			let destination = document.querySelector("#dethele");
+			let destination = document.querySelector("#brødtekst");
 			destination.innerHTML = "";
 
 			alleRetter.forEach(ret => {

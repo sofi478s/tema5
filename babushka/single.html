@@ -4,45 +4,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>Babusha Bistro</title>
+	<link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
 	<style>
 		/*	____________________Pop Up____________________*/
 		body {
 			margin: 0px;
 			background-color: rgba(128, 128, 128, 0);
-		}
-
-		/*____________________Header____________________*/
-
-		header {
-			color: #2e2e2e;
-			background-color: white;
-			text-align: center;
-			width: 100%;
-			font-family: 'Mr Dafoe', cursive;
-			font-size: 7vw;
-			top: 0;
-			position: fixed;
-		}
-
-		#brødtekst {
-			margin: 10vw;
-		}
-
-
-
-		/*____________________Navigation____________________*/
-
-		nav {
-			text-align: center;
-			display: grid;
-			grid-template-columns: auto;
-		}
-
-		nav h2 {
-			color: #383838;
-			font-family: 'Anonymous Pro', monospace;
-			font-size: 1.2rem;
 		}
 
 		button {
@@ -100,14 +69,14 @@
 		#indhold {
 			text-align: center;
 			background-color: white;
-			width: 90vw;
-			height: 90vw;
+			width: 50vw;
+			height: 50vw;
 			top: 0;
 			margin: 10vw auto;
 		}
 
 		#luk {
-			top: 6.7vh;
+			top: 0;
 			position: static;
 			right: 1rem;
 			padding-right: 2rem;
@@ -163,51 +132,6 @@
 				grid-template-columns: auto auto auto;
 			}
 		}
-
-		/*
-		body {
-			box-sizing: border-box;
-		}
-
-		img {
-			width: 100%;
-		}
-
-		#single {
-			top: 0;
-			width: 100vw;
-			height: 100vh;
-			background-color: indianred;
-
-		}
-
-		#indhold {
-			min-height: 80vh;
-			background-color: white;
-			width: 70vw;
-			margin: 4rem auto;
-		}
-
-		#luk {
-			top: 6.7vh;
-			position: static;
-			right: 1rem;
-			padding-right: 2rem;
-			float: right;
-
-		}
-
-		#luk button {
-			padding: 1rem;
-			font-size: 1rem;
-		}
-
-		button {
-			border: 1px rgba(255, 165, 0, 0.35) solid;
-			font-family: 'Anonymous Pro', monospace;
-			color: grey;
-		}
-*/
 	</style>
 
 </head>
@@ -241,7 +165,16 @@
 			alleRetter.forEach(ret => {
 				if (ret.id == id) {
 					let template = `
-<div id="article"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg><br> <p>${ret.lang}</p> <br> <p>Oprindelse: ${ret.oprindelse}</p> <br> <p>Pris: ${ret.pris},-</p></div>`;
+					<div id="article">
+					<h2>${ret.navn}</h2>
+					<img src=imgs/large/${ret.billede}.jpg>
+					<br>
+					<p>${ret.lang}</p>
+					<br>
+					<p>Oprindelse: ${ret.oprindelse}</p>
+					<br>
+					<p>Pris: ${ret.pris},-</p>
+					</div>`;
 
 					destination.insertAdjacentHTML("beforeend", template);
 					destination.lastElementChild.addEventListener("click", visSingle);

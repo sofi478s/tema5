@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>Babusha Bistro</title>
 	<link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
 	<style>
@@ -26,8 +26,9 @@
 			position: fixed;
 		}
 
-		#brødtekst {
+		#dethele {
 			margin: 10vw;
+			margin-bottom: 2vw;
 		}
 
 
@@ -84,12 +85,13 @@
 		/*	____________________Pop Up____________________*/
 
 		#popup {
-			background-color: white;
+			background-color: rgba(186, 186, 186, 0.74);
 			top: 0;
 			width: 100vw;
 			height: 100vh;
 			position: fixed;
 			display: none;
+			overflow: scroll;
 		}
 
 		#popup #article img {
@@ -100,19 +102,16 @@
 
 		#indhold {
 			text-align: center;
-			background-color: white;
-			width: 90vw;
-			height: 90vw;
+			width: 50vw;
+			height: 43.5vw;
 			top: 0;
 			margin: 10vw auto;
 		}
 
 		#luk {
-			top: 6.7vh;
-			position: static;
-			right: 1rem;
+			margin-top: 0vw;
+			margin-left: 80vw;
 			padding-right: 2rem;
-			float: right;
 
 		}
 
@@ -123,6 +122,7 @@
 
 		/*	____________________Indhold paa siden____________________*/
 		#article {
+			background-color: white;
 			margin: 10px;
 			border: 1.4px solid gray;
 			padding: 5vw;
@@ -132,10 +132,26 @@
 			width: 100%;
 		}
 
-		#dethele {
+		#brødtekst {
 			display: grid;
 			grid-template-columns: auto;
 		}
+
+		/*	____________________Footer____________________*/
+
+		footer article {
+			font-size: 0.8rem;
+			font-family: 'Anonymous Pro', monospace;
+			color: #383838;
+		}
+
+		footer {
+			text-align: center;
+			display: grid;
+			grid-template-columns: auto auto;
+			margin-bottom: 1vw;
+		}
+
 
 
 		/*____________________Media Queries____________________*/
@@ -146,7 +162,7 @@
 				grid-template-columns: auto auto;
 			}
 
-			#dethele {
+			#brødtekst {
 				display: grid;
 				grid-template-columns: auto auto;
 			}
@@ -159,7 +175,7 @@
 				grid-template-columns: auto auto;
 			}
 
-			#dethele {
+			#brødtekst {
 				display: grid;
 				grid-template-columns: auto auto auto;
 			}
@@ -175,10 +191,11 @@
 		<div id="luk">
 			<button>luk</button> </div>
 		<div id="indhold">
+
 		</div>
 	</div>
 
-	<section id="brødtekst">
+	<section id="dethele">
 		<nav>
 			<div id="kategori">
 				<h2>Kategorier</h2>
@@ -197,10 +214,15 @@
 		</nav>
 
 		<h1>Alle retter</h1>
-		<div id="dethele">
+		<div id="brødtekst">
 
 		</div>
 	</section>
+
+	<footer>
+		<article>Grønnegade 97, <br> 1234 København K</article>
+		<article>Åbningstider: <br>Mandag-fredag: 10:30 - 22:00 <br> Lørdag: 12:00 - 23:00</article>
+	</footer>
 	<script>
 		document.addEventListener("DOMContentLoaded", hentJson);
 		let filter = "alle";
@@ -213,20 +235,36 @@
 
 
 		function visRetter() {
-			let destination = document.querySelector("#dethele");
+			let destination = document.querySelector("#brødtekst");
 			destination.innerHTML = "";
 
 			alleRetter.forEach(ret => {
 				if (filter == "alle" || filter == ret.kategori) {
 					let template = `
-						<div id="article"> <h3>${ret.navn}</h3> <img src=imgs/large/${ret.billede}.jpg> <br> <p>${ret.kort}</p> <br> <p>Pris: ${ret.pris},-</p></div>`;
+						<div id="article">
+						<h3>${ret.navn}</h3>
+						<img src=imgs/large/${ret.billede}.jpg>
+						<br>
+						<p>${ret.kort}</p>
+						<br>
+						<p>Pris: ${ret.pris},-</p>
+						</div>`;
 
 					destination.insertAdjacentHTML("beforeend", template);
 					destination.lastElementChild.addEventListener("click", visSingle);
 
 					function visSingle() {
 						document.querySelector("#indhold").innerHTML = `
-<div id="article"> <h2>${ret.navn}</h2> <img src=imgs/large/${ret.billede}.jpg><br> <p>${ret.lang}</p> <br> <p>Oprindelse: ${ret.oprindelse}</p> <br> <p>Pris: ${ret.pris},-</p></div>`;
+						<div id="article">
+						<h2>${ret.navn}</h2>
+						<img src=imgs/large/${ret.billede}.jpg>
+						<br>
+						<p>${ret.lang}</p>
+						<br>
+						<p>Oprindelse: ${ret.oprindelse}</p>
+						<br>
+						<p>Pris: ${ret.pris},-</p>
+						</div>`;
 
 						document.querySelector("#popup").style.display = "block";
 
