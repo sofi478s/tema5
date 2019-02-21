@@ -1,0 +1,82 @@
+/* Universelt */
+
+body {
+	background: #fcfbfa;
+	margin: 0px;
+}
+
+/* Header */
+
+#splash img {
+	margin: 0px;
+	width: 100%;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+
+header nav img {
+	margin-top: 2vw;
+	max-width: 20vw;
+}
+
+header nav {
+	text-align: center;
+}
+
+header nav a {
+	color: white;
+	margin: 2px;
+	background-size: cover;
+	align-self: flex-end;
+	padding: 2px;
+	font-size: 1.2rem;
+
+}
+
+
+header nav a:link {
+	font-weight: 100;
+	color: black;
+}
+
+
+header nav a:visited {
+
+	font-style: normal;
+	font-weight: 100;
+	color: black;
+}
+
+
+header nav a:hover {
+
+	font-style: normal;
+	font-weight: 500;
+	color: black;
+}
+
+
+header nav a:active {
+
+	font-style: normal;
+	font-weight: 100;
+
+	color: black;
+}
+
+/* Menu */
+
+#dethele {
+	text-align: center;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+#enkelt img {
+	max-width: 40vw;
+	margin: 2vw;
+}

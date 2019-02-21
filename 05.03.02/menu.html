@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>taco!taco!</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<header>
+		<nav>
+			<a href="menu.html">menu</a>
+			<a href="index.html"><img src="billeder/logo.svg" alt="taco!taco!-logo"></a>
+			<a href="kontakt.html">kontakt</a>
+
+		</nav>
+	</header>
+
+	<div id="splash"><img src="billeder/splash_web.png" alt="Splashfoto"></div>
+
+	<div id="forretter">
+
+	</div>
+
+	<div id="tacos">
+
+	</div>
+
+	<div id="drikkevarer">
+
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", hentJson);
+
+		async function hentJson() {
+			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1alH_5hQ2CTUpmzE9kCT-CQc6N4MsFjTq8xKnxYroiPY");
+			alleRetter = await jsonData.json();
+			visRetter();
+		}
+
+
+		function visRetter() {
+			let destination = document.querySelector("#dethele");
+
+			alleRetter.forEach(ret => {
+				destination.innerHTML += `<div id="enkelt"> <h2>${ret.navn}</h2> <img src=menu-billeder/${ret.billede}.jpg> <br> <p>Pris: ${ret.pris}</p></div>`;
+
+			})
+		}
+	</script>
+</body>
+
+</html>
