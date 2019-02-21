@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
 	<header>
 		<nav>
 			<a href="menu.html">menu</a>
@@ -20,20 +21,42 @@
 
 	<div id="splash"><img src="billeder/splash_web.png" alt="Splashfoto"></div>
 
-	<div id="forretter">
+	<div id="popup">
+		<div id="luk">
+			<button>luk</button> </div>
+		<div id="indhold">
 
+		</div>
 	</div>
 
-	<div id="tacos">
+	<section id="menu">
+		<h1>Menu</h1>
+		<div id="undermenu">
+			<div id="kategori">
+				<h2>Filtrér</h2>
+				<button class="filter" data-kategori="alle">Menu</button><br>
+				<button class="filter" data-kategori="forretter">Forretter</button><br>
+				<button class="filter" data-kategori="tacos">Tacos</button><br>
+				<button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+			</div>
 
-	</div>
+			<div id="sorter">
+				<h2>Sortér</h2>
+				<button class="sorter sorterPris">Pris, lav til høj</button><br>
+				<button class="sorter sorterPrisOmvendt">Pris, høj til lav</button><br>
+				<button class="sorter sorterNavn">Navn, a til å</button>
+			</div>
+		</div>
 
-	<div id="drikkevarer">
+		<div id="brødtekst">
 
-	</div>
+		</div>
+
+	</section>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", hentJson);
+		let filter = "alle";
 
 		async function hentJson() {
 			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1alH_5hQ2CTUpmzE9kCT-CQc6N4MsFjTq8xKnxYroiPY");
@@ -43,12 +66,82 @@
 
 
 		function visRetter() {
-			let destination = document.querySelector("#dethele");
+			let destination = document.querySelector("#brødtekst");
+			destination.innerHTML = "";
 
 			alleRetter.forEach(ret => {
-				destination.innerHTML += `<div id="enkelt"> <h2>${ret.navn}</h2> <img src=menu-billeder/${ret.billede}.jpg> <br> <p>Pris: ${ret.pris}</p></div>`;
+				if (filter == "alle" || filter == ret.kategori) {
+					let template = `
+						<div id="article">
+						<h3>${ret.navn}</h3>
+						<img src=menu-billeder/${ret.billede}.jpg>
+						<br>
+						<p>Pris: ${ret.pris},-</p>
+						</div>`;
 
-			})
+					destination.insertAdjacentHTML("beforeend", template);
+					destination.lastElementChild.addEventListener("click", visSingle);
+
+					function visSingle() {
+						document.querySelector("#indhold").innerHTML = `
+						<div id="article">
+						<h2>${ret.navn}</h2>
+						<img src=menu-billeder/${ret.billede}.jpg>
+						<br>
+						<p>${ret.beskrivelse}</p>
+						<br>
+						<br>
+						<p>Pris: ${ret.pris},-</p>
+						</div>`;
+
+						document.querySelector("#popup").style.display = "block";
+
+						document.querySelector("#popup #luk").addEventListener("click", close);
+					}
+				}
+
+			});
+		}
+
+
+
+		function close() {
+			document.querySelector("#popup").style.display = "none";
+		}
+
+		document.querySelectorAll(".filter").forEach(knap => {
+			knap.addEventListener("click", filtrering);
+		});
+
+		function filtrering() {
+			document.querySelector("h1").textContent = this.textContent;
+			filter = this.getAttribute("data-kategori");
+			console.log(filter);
+			visRetter();
+		}
+
+		document.querySelectorAll(".sorter").forEach(knap => {
+			knap.addEventListener("click", sortering);
+		});
+
+		function sortering() {
+			console.log("Sortering");
+			if (this.classList.contains("sorterPris")) {
+				alleRetter.sort((a, b) => {
+					return a.pris - b.pris
+				});
+			} else if (this.classList.contains("sorterPrisOmvendt")) {
+				alleRetter.sort((a, b) => {
+					return b.pris - a.pris
+				});
+			} else if (this.classList.contains("sorterNavn")) {
+				alleRetter.sort((a, b) => {
+					return a.navn.localeCompare(b.navn);
+				});
+			}
+
+			visRetter();
+
 		}
 	</script>
 </body>

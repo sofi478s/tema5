@@ -70,13 +70,63 @@ header nav a:active {
 
 /* Menu */
 
-#dethele {
+#menu h1 {
+	text-align: center;
+}
+
+#brødtekst {
 	text-align: center;
 	display: grid;
 	grid-template-columns: auto auto;
 }
 
-#enkelt img {
+#undermenu {
+	text-align: center;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+#menu img {
 	max-width: 40vw;
 	margin: 2vw;
+}
+
+/*	____________________Pop Up____________________*/
+
+#popup {
+	background-color: rgba(164, 182, 186, 0.78);
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	display: none;
+	overflow: scroll;
+}
+
+#popup img {
+	width: 80%;
+}
+
+
+
+#indhold {
+	background-color: #fcfbfa;
+	text-align: center;
+	width: 90vw;
+	height: 80vh;
+	top: 0;
+	margin: auto;
+	padding-top: 1vh;
+}
+
+#luk {
+	margin-top: 0vw;
+	margin-left: 80vw;
+	padding-right: 2rem;
+
+}
+
+#luk button {
+	padding: 1rem;
+	font-size: 1rem;
 }
