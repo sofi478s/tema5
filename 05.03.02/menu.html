@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>taco!taco!</title>
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 </head>
 
 <body>
@@ -30,18 +31,18 @@
 	</div>
 
 	<section id="menu">
-		<h1>Menu</h1>
 		<div id="undermenu">
+
 			<div id="kategori">
-				<h2>Filtrér</h2>
+				<h2>Filtrer</h2>
 				<button class="filter" data-kategori="alle">Menu</button><br>
 				<button class="filter" data-kategori="forretter">Forretter</button><br>
 				<button class="filter" data-kategori="tacos">Tacos</button><br>
 				<button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
 			</div>
-
+			<h1>Menu</h1>
 			<div id="sorter">
-				<h2>Sortér</h2>
+				<h2>Sorter</h2>
 				<button class="sorter sorterPris">Pris, lav til høj</button><br>
 				<button class="sorter sorterPrisOmvendt">Pris, høj til lav</button><br>
 				<button class="sorter sorterNavn">Navn, a til å</button>
@@ -73,10 +74,8 @@
 				if (filter == "alle" || filter == ret.kategori) {
 					let template = `
 						<div id="article">
-						<h3>${ret.navn}</h3>
+						<h2>${ret.navn}</h2>
 						<img src=menu-billeder/${ret.billede}.jpg>
-						<br>
-						<p>Pris: ${ret.pris},-</p>
 						</div>`;
 
 					destination.insertAdjacentHTML("beforeend", template);
@@ -89,8 +88,6 @@
 						<img src=menu-billeder/${ret.billede}.jpg>
 						<br>
 						<p>${ret.beskrivelse}</p>
-						<br>
-						<br>
 						<p>Pris: ${ret.pris},-</p>
 						</div>`;
 
