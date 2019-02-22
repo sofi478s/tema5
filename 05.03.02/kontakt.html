@@ -19,21 +19,27 @@
 		</nav>
 	</header>
 
-	<div id="splash"><img src="billeder/splash_web.png" alt="Splashfoto"></div>
+	<div id="splash">
+		<picture>
+			<source media="(min-width: 1100px)" srcset="billeder/splash_webweb.png">
+			<img src="billeder/splash_web.png" alt="Splashfoto">
+		</picture>
+	</div>
 
 	<section id="kontakt">
 		<h1>kontakt</h1>
 		<h2>tlf: xx xx xx xx</h2>
 
-		<h3>AAbningstider</h3>
-		<p>Mandag - fredag: 14:00 til 21:00 <br>
-			Lørdag: 12:00 til 22:00 <br>
-			Søndag: Lukket</p>
+		<section id="kontakt_grid">
+			<div id="aabningstider"><h3>AAbningstider</h3>
+			<p>Mandag - fredag: 14:00 til 21:00 <br>
+				Lørdag: 12:00 til 22:00 <br>
+				Søndag: Lukket</p></div>
 
+<div id="kort">
+			<h3>Find os</h3></div>
 
-		<h3>Find os</h3>
-
-
+		</section>
 	</section>
 	<script src="javascript.js"></script>
 </body>
