@@ -1,0 +1,553 @@
+/* Universelt */
+
+@font-face {
+	font-family: 'greething';
+	src: url('fonte/comic_block__demo_by_marta_van_eck-webfont.woff2') format('woff2'),
+		url('fonte/comic_block__demo_by_marta_van_eck-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+* {
+	margin: 0px:
+}
+
+body {
+	background: #fcfbfa;
+	margin: 0px;
+}
+
+h2 {
+	font-family: greething;
+}
+
+h1 {
+	font-family: greething;
+	;
+	margin: 0;
+	-webkit-text-stroke-width: 0.001px;
+	-webkit-text-stroke-color: #33444e;
+	color: #facac9;
+	font-size: 1.5rem;
+	text-align: center;
+	background-color: #f4dc50;
+}
+
+p {
+
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
+	font-size: 1rem;
+	color: #33444e;
+}
+
+/* Header */
+
+#splash img {
+	margin: 0px;
+	width: 100%;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+
+header nav img {
+	margin-top: 2vw;
+	max-width: 20vw;
+}
+
+header nav {
+	text-align: center;
+}
+
+header nav a:nth-child(odd) {
+	background-image: url(billeder/menu_maling.png);
+}
+
+header nav a {
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
+	color: white;
+	margin: 2px;
+	background-size: cover;
+	padding: 1vw;
+	align-self: flex-end;
+	font-size: 1rem;
+	text-decoration: none;
+
+}
+
+
+header nav a:link {
+	font-weight: 100;
+	color: white;
+}
+
+
+header nav a:visited {
+	font-weight: 100;
+	color: white;
+}
+
+
+header nav a:hover {
+
+	font-style: normal;
+	font-weight: 100;
+	color: white;
+}
+
+
+header nav a:active {
+
+	font-style: normal;
+	font-weight: 100;
+
+	color: white;
+}
+
+/* Footer */
+
+footer article {
+	margin-top: 6vw;
+	font-size: 0.8rem;
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
+	color: #383838;
+}
+
+footer {
+	clear: both;
+	text-align: center;
+	display: grid;
+	grid-template-columns: auto auto;
+	margin-bottom: 5vw;
+}
+
+
+/* Menu */
+
+#brødtekst {
+	text-align: center;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+#undermenu {
+	background-color: #f4dc50;
+	padding: 2vw;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+#undermenu h2 {
+	font-size: 1.3rem;
+	color: #33444e;
+	margin: 0;
+}
+
+#undermenu h1 {
+	font-size: 2rem;
+}
+
+#menu img {
+	max-width: 40vw;
+	margin: 2vw;
+}
+
+#article {
+	font-size: 1.1rem;
+	margin: 0.5vw;
+	border: 1px solid #f4dc50;
+}
+
+#article h2 {
+	font-size: 1.5rem;
+	color: #dda542;
+}
+
+#undermenu button {
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
+	color: white;
+	border-style: none;
+	background-color: rgba(255, 0, 0, 0);
+}
+
+
+/*	____________________Pop Up____________________*/
+
+#popup {
+	background-color: rgba(164, 182, 186, 0.78);
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	display: none;
+	overflow: scroll;
+}
+
+#popup h2 {
+	font-size: 3rem;
+	color: #7c964d;
+}
+
+#popup img {
+	width: 80%;
+}
+
+#popup #article {
+	background-color: #fcfbfa;
+	text-align: center;
+	width: 90vw;
+	top: 0;
+	margin: auto;
+	padding-top: 1vh;
+}
+
+#luk {
+	margin-top: 0vw;
+	margin-left: 80vw;
+	padding-right: 2rem;
+
+}
+
+#luk button {
+	border-style: none;
+	background-color: rgba(255, 255, 255, 0);
+	color: #33444e;
+	font-family: greething;
+	padding: 1rem;
+	font-size: 1.5rem;
+}
+
+/* Forside */
+
+#forside p {
+	margin: 5vw;
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+#forside img {
+	max-width: 60%;
+	float: right;
+	margin-right: 5vw;
+}
+
+/* Kontakt */
+
+#kontakt h2 {
+	text-align: center;
+	font-size: 1.3rem;
+	color: rgb(51, 68, 78);
+	margin: 2vw;
+	;
+}
+
+#kontakt h3 {
+	font-family: greething;
+	font-size: 1.7rem;
+	color: #dda542;
+	margin-left: 5vw;
+	margin-bottom: 0;
+}
+
+#kontakt p {
+	margin: 5vw;
+	margin-top: 0;
+	font-size: 1rem;
+	line-height: 2.5rem;
+}
+
+
+/*________________IPAD-MEDIA QUERY___________________________*/
+
+@media only screen and (min-width:700px) {
+
+	/* Ipad Header */
+
+
+	header nav img {
+		max-width: 20vw;
+	}
+
+	header nav a {
+		font-size: 1.5rem;
+
+	}
+
+	/* Ipad Menu */
+
+	#brødtekst {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	#undermenu h2 {
+		font-size: 2rem;
+	}
+
+	#undermenu h1 {
+		font-size: 4rem;
+	}
+
+	#menu img {
+		max-width: 80%;
+	}
+
+	#article {
+		margin: 1vw;
+	}
+
+	#article h2 {
+		font-size: 2rem;
+	}
+
+	#undermenu button {
+		font-family: proxima-nova, sans-serif;
+		font-weight: 100;
+		font-style: normal;
+		color: white;
+		font-size: 1.2rem;
+	}
+
+	/* Ipad Popup */
+
+	#luk {
+		margin-top: 0vw;
+		margin-left: 80vw;
+		padding-right: 2rem;
+
+	}
+
+	#luk button {
+		color: #33444e;
+		font-family: greething;
+		padding: 1rem;
+		font-size: 2.5rem;
+	}
+
+	/* Ipad Forside */
+
+	#forside h1 {
+		padding: 2vw;
+	}
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	#forside p {
+		font-size: 1.4rem;
+		line-height: 2.5rem;
+	}
+
+	#forside img {
+		max-width: 30vw;
+		margin-top: 3.5vw;
+	}
+
+	#forside_grid {
+		display: grid;
+		grid-template-columns: auto auto;
+		margin-right: 10vw;
+		margin-left: 10vw;
+	}
+
+	/* Ipad Kontakt */
+
+	#kontakt h1 {
+		padding: 2vw;
+	}
+
+	#kontakt h2 {
+		text-align: center;
+		font-size: 1.8rem;
+		color: rgb(51, 68, 78);
+		margin: 2vw;
+	}
+
+	#kontakt h3 {
+		font-family: greething;
+		font-size: 2.5rem;
+		color: #dda542;
+		margin-left: 5vw;
+		margin-bottom: 0;
+	}
+
+	#kontakt_grid {
+		margin-right: 10vw;
+		margin-left: 10vw;
+	}
+
+	#kontakt_grid p {
+		margin: 5vw;
+		margin-top: 0;
+		font-size: 1.3rem;
+		line-height: 4rem;
+	}
+
+	#kort {
+		float: right;
+	}
+
+
+}
+
+/*________________WEB MEDIA QUERY___________________________*/
+
+@media only screen and (min-width: 1100px) {
+
+	/* Web Header */
+
+
+	header nav img {
+		max-width: 12vw;
+	}
+
+	header nav a {
+		font-size: 1.2rem;
+
+	}
+
+	/* Web Menu */
+
+
+	#brødtekst {
+		grid-template-columns: 1fr 1fr 1fr;
+		margin-left: 13vw;
+		margin-right: 13vw;
+	}
+
+	#undermenu h2 {
+		font-size: 2rem;
+	}
+
+	#undermenu h1 {
+		font-size: 4rem;
+	}
+
+	#article h2 {
+		font-size: 2.5rem;
+		margin: 1vw;
+		;
+	}
+
+	#article img {
+		margin-top: 0;
+	}
+
+	#undermenu button {
+		font-size: 1rem;
+	}
+
+
+	/*	Web Pop up */
+
+
+	#popup img {
+		width: 55%;
+	}
+
+	#popup #article {
+		background-color: #fcfbfa;
+		text-align: center;
+		width: 50vw;
+		top: 0;
+		margin: auto;
+		padding: 2vw;
+		padding-top: 1vh;
+	}
+
+	#luk {
+		margin-top: 3vw;
+		margin-left: 80vw;
+		padding-right: 2rem;
+
+	}
+
+	#luk button {
+		color: #33444e;
+		font-family: greething;
+		padding: 1rem;
+		font-size: 2rem;
+	}
+
+	/* Web Forside */
+
+	#forside h1 {
+		padding: 2vw;
+	}
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	#forside p {
+		font-size: 1rem;
+		line-height: 2.5rem;
+	}
+
+	#forside img {
+		max-width: 20vw;
+		margin-top: 3.5vw;
+	}
+
+	#forside_grid {
+		margin-left: 13vw;
+		margin-right: 13vw;
+		display: grid;
+		grid-template-columns: auto auto;
+	}
+
+
+	footer {
+		margin-bottom: 2vw;
+	}
+
+	/* Web Kontakt */
+
+	#kontakt h1 {
+		padding: 2vw;
+	}
+
+	#kontakt_grid {
+		display: grid;
+		grid-template-columns: auto auto;
+		margin-left: 13vw;
+		margin-right: 13vw;
+	}
+
+	#kontakt h2 {
+		text-align: center;
+		font-size: 1.8rem;
+		color: rgb(51, 68, 78);
+		margin: 2vw;
+	}
+
+	#kontakt h3 {
+		font-family: greething;
+		font-size: 2.5rem;
+		color: #dda542;
+		margin-left: 5vw;
+		margin-bottom: 0;
+	}
+
+	#kontakt_grid p {
+		margin: 5vw;
+		margin-top: 0;
+		font-size: 1.3rem;
+		line-height: 4rem;
+	}
+
+
+}

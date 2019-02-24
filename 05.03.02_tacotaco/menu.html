@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>taco!taco!</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.typekit.net/ucs7qee.css">
+</head>
+
+<body>
+
+	<header>
+		<nav>
+			<a href="menu.html">menu</a>
+			<a href="index.html"><img src="billeder/logo.png" alt="Taco taco logo"></a>
+			<a href="kontakt.html">kontakt</a>
+
+		</nav>
+	</header>
+
+	<div id="splash">
+		<picture>
+			<source media="(min-width: 1100px)" srcset="billeder/splash_webweb.png">
+			<img src="billeder/splash_web.png" alt="Splashfoto">
+		</picture>
+	</div>
+
+	<div id="popup">
+		<div id="luk">
+			<button>luk</button> </div>
+		<div id="indhold">
+
+		</div>
+	</div>
+
+	<section id="menu">
+		<div id="undermenu">
+
+			<div id="kategori">
+				<h2>Filtrer</h2>
+				<button class="filter" data-kategori="alle">Menu</button><br>
+				<button class="filter" data-kategori="forretter">Forretter</button><br>
+				<button class="filter" data-kategori="tacos">Tacos</button><br>
+				<button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+			</div>
+			<h1>Menu</h1>
+			<div id="sorter">
+				<h2>Sorter</h2>
+				<button class="sorter sorterPris">Pris, lav til høj</button><br>
+				<button class="sorter sorterPrisOmvendt">Pris, høj til lav</button><br>
+				<button class="sorter sorterNavn">Navn, a til å</button>
+			</div>
+		</div>
+
+		<div id="brødtekst">
+
+		</div>
+
+	</section>
+
+	<footer>
+		<article>Blågårdsplads 01, <br> 2200 København N</article>
+		<article>Telefon: xx xx xx xx<br>Facebook<br>Instagram</article>
+	</footer>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", hentJson);
+		let filter = "alle";
+
+		async function hentJson() {
+			let jsonData = await fetch("retter.json");
+			alleRetter = await jsonData.json();
+			visRetter();
+		}
+
+
+		function visRetter() {
+			let destination = document.querySelector("#brødtekst");
+			destination.innerHTML = "";
+
+			alleRetter.forEach(ret => {
+				if (filter == "alle" || filter == ret.kategori) {
+					let template = `
+						<div id="article">
+						<h2>${ret.navn}</h2>
+						<img src=menu-billeder/${ret.billede}.jpg>
+						</div>`;
+
+					destination.insertAdjacentHTML("beforeend", template);
+					destination.lastElementChild.addEventListener("click", visSingle);
+
+					function visSingle() {
+						document.querySelector("#indhold").innerHTML = `
+						<div id="article">
+						<h2>${ret.navn}</h2>
+						<img src=menu-billeder/${ret.billede}.jpg>
+						<br>
+						<p>${ret.beskrivelse}</p>
+						<p>Pris: ${ret.pris},-</p>
+						</div>`;
+
+						document.querySelector("#popup").style.display = "block";
+
+						document.querySelector("#popup #luk").addEventListener("click", close);
+					}
+				}
+
+			});
+		}
+
+
+
+		function close() {
+			document.querySelector("#popup").style.display = "none";
+		}
+
+		document.querySelectorAll(".filter").forEach(knap => {
+			knap.addEventListener("click", filtrering);
+		});
+
+		function filtrering() {
+			document.querySelector("h1").textContent = this.textContent;
+			filter = this.getAttribute("data-kategori");
+			console.log(filter);
+			visRetter();
+		}
+
+		document.querySelectorAll(".sorter").forEach(knap => {
+			knap.addEventListener("click", sortering);
+		});
+
+		function sortering() {
+			console.log("Sortering");
+			if (this.classList.contains("sorterPris")) {
+				alleRetter.sort((a, b) => {
+					return a.pris - b.pris
+				});
+			} else if (this.classList.contains("sorterPrisOmvendt")) {
+				alleRetter.sort((a, b) => {
+					return b.pris - a.pris
+				});
+			} else if (this.classList.contains("sorterNavn")) {
+				alleRetter.sort((a, b) => {
+					return a.navn.localeCompare(b.navn);
+				});
+			}
+
+			visRetter();
+
+		}
+	</script>
+</body>
+
+</html>
