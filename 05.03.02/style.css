@@ -31,7 +31,10 @@ h1 {
 }
 
 p {
-	font-family: avenir-light;
+
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
 	font-size: 1rem;
 	color: #33444e;
 }
@@ -63,10 +66,13 @@ header nav a:nth-child(odd) {
 }
 
 header nav a {
-	font-family: avenir-light;
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
 	color: white;
 	margin: 2px;
 	background-size: cover;
+	padding: 1vw;
 	align-self: flex-end;
 	font-size: 1rem;
 	text-decoration: none;
@@ -89,7 +95,7 @@ header nav a:visited {
 header nav a:hover {
 
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 100;
 	color: white;
 }
 
@@ -101,6 +107,26 @@ header nav a:active {
 
 	color: white;
 }
+
+/* Footer */
+
+footer article {
+	margin-top: 6vw;
+	font-size: 0.8rem;
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
+	color: #383838;
+}
+
+footer {
+	clear: both;
+	text-align: center;
+	display: grid;
+	grid-template-columns: auto auto;
+	margin-bottom: 5vw;
+}
+
 
 /* Menu */
 
@@ -145,16 +171,14 @@ header nav a:active {
 }
 
 #undermenu button {
-	font-family: avenir-light;
+	font-family: proxima-nova, sans-serif;
+	font-weight: 100;
+	font-style: normal;
 	color: white;
 	border-style: none;
 	background-color: rgba(255, 0, 0, 0);
 }
 
-#sorter {
-	display: grid;
-	grid-template-rows: auto;
-}
 
 /*	____________________Pop Up____________________*/
 
@@ -285,7 +309,9 @@ header nav a:active {
 	}
 
 	#undermenu button {
-		font-family: avenir-light;
+		font-family: proxima-nova, sans-serif;
+		font-weight: 100;
+		font-style: normal;
 		color: white;
 		font-size: 1.2rem;
 	}
@@ -322,24 +348,21 @@ header nav a:active {
 	}
 
 	#forside img {
-		max-width: 40vw;
+		max-width: 30vw;
 		margin-top: 3.5vw;
 	}
 
 	#forside_grid {
 		display: grid;
 		grid-template-columns: auto auto;
+		margin-right: 10vw;
+		margin-left: 10vw;
 	}
 
 	/* Ipad Kontakt */
 
 	#kontakt h1 {
 		padding: 2vw;
-	}
-
-	#kontakt_grid {
-		display: grid;
-		grid-template-columns: auto auto;
 	}
 
 	#kontakt h2 {
@@ -357,11 +380,20 @@ header nav a:active {
 		margin-bottom: 0;
 	}
 
+	#kontakt_grid {
+		margin-right: 10vw;
+		margin-left: 10vw;
+	}
+
 	#kontakt_grid p {
 		margin: 5vw;
 		margin-top: 0;
 		font-size: 1.3rem;
 		line-height: 4rem;
+	}
+
+	#kort {
+		float: right;
 	}
 
 
@@ -415,7 +447,7 @@ header nav a:active {
 	}
 
 
-	/*	____________________Web Pop Up____________________*/
+	/*	Web Pop up */
 
 
 	#popup img {
@@ -446,7 +478,7 @@ header nav a:active {
 		font-size: 2rem;
 	}
 
-	/* Ipad Forside */
+	/* Web Forside */
 
 	#forside h1 {
 		padding: 2vw;
@@ -457,21 +489,28 @@ header nav a:active {
 	}
 
 	#forside p {
-		font-size: 1.4rem;
+		font-size: 1rem;
 		line-height: 2.5rem;
 	}
 
 	#forside img {
-		max-width: 40vw;
+		max-width: 20vw;
 		margin-top: 3.5vw;
 	}
 
 	#forside_grid {
+		margin-left: 13vw;
+		margin-right: 13vw;
 		display: grid;
 		grid-template-columns: auto auto;
 	}
 
-	/* Ipad Kontakt */
+
+	footer {
+		margin-bottom: 2vw;
+	}
+
+	/* Web Kontakt */
 
 	#kontakt h1 {
 		padding: 2vw;
@@ -480,6 +519,8 @@ header nav a:active {
 	#kontakt_grid {
 		display: grid;
 		grid-template-columns: auto auto;
+		margin-left: 13vw;
+		margin-right: 13vw;
 	}
 
 	#kontakt h2 {

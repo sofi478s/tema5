@@ -7,6 +7,7 @@
 	<title>taco!taco!</title>
 	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.typekit.net/ucs7qee.css">
 </head>
 
 <body>
@@ -60,12 +61,17 @@
 
 	</section>
 
+	<footer>
+		<article>Blågårdsplads 01, <br> 2200 København N</article>
+		<article>Telefon: xx xx xx xx<br>Facebook<br>Instagram</article>
+	</footer>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", hentJson);
 		let filter = "alle";
 
 		async function hentJson() {
-			let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1alH_5hQ2CTUpmzE9kCT-CQc6N4MsFjTq8xKnxYroiPY");
+			let jsonData = await fetch("retter.json");
 			alleRetter = await jsonData.json();
 			visRetter();
 		}

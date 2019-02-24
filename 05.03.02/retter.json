@@ -1,0 +1,58 @@
+[
+	{
+		"id": 1,
+		"kategori": "forretter",
+		"navn": "Corn Croquette",
+		"pris": 35,
+		"beskrivelse": "Croquettes af krydrede majs. Serveres med chilimayo.",
+		"billede": "croquette"
+},
+	{
+		"id": 2,
+		"kategori": "forretter",
+		"navn": "Grilled Corn",
+		"pris": 35,
+		"beskrivelse": "Grillede majskolber.",
+		"billede": "majs"
+},
+	{
+		"id": 3,
+		"kategori": "tacos",
+		"navn": "Taco Esponja",
+		"pris": 40,
+		"beskrivelse": "Taco med stegte svampe, koriander og chilimayo",
+		"billede": "taco_svampe"
+},
+	{
+		"id": 4,
+		"kategori": "tacos",
+		"navn": "Taco Tofu",
+		"pris": 40,
+		"beskrivelse": "Vegansk! Taco med tofu, syltet rødkål og koriander",
+		"billede": "taco_tofu"
+},
+	{
+		"id": 5,
+		"kategori": "tacos",
+		"navn": "Taco Pulled Pork",
+		"pris": 40,
+		"beskrivelse": "Taco med pulled pork, jalapenos og syltede rødløg.",
+		"billede": "taco_pulled"
+},
+	{
+		"id": 6,
+		"kategori": "drikkevarer",
+		"navn": "Corona",
+		"pris": 20,
+		"beskrivelse": "Lys og frisk øl.",
+		"billede": "corona"
+},
+	{
+		"id": 7,
+		"kategori": "drikkevarer",
+		"navn": "Jarritos",
+		"pris": 20,
+		"beskrivelse": "Mexikansk sodavand. Fås i seks smagsvarienter: mango, lime, guava, mandarin, grape og cola.",
+		"billede": "soda"
+}
+]
